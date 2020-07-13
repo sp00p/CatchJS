@@ -1,0 +1,26 @@
+{
+  "name": "catchjs",
+  "version": "0.0.1",
+  "description": "a simple discord bot ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sp00p/CatchJS.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Sean#0004",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sp00p/CatchJS/issues"
+  },
+  "homepage": "https://github.com/sp00p/CatchJS#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
