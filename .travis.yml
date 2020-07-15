@@ -1,8 +1,8 @@
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
-  - ./send.sh success $https://discordapp.com/api/webhooks/733080982898343936/RexOI4SflOB5tSW8Uj3z0uwdLUazBuTzKQ-qOnRcS4DAKBhzcfxCevqcdG4Q6g59x-1e
+  - ./send.sh success https://discordapp.com/api/webhooks/733080982898343936/RexOI4SflOB5tSW8Uj3z0uwdLUazBuTzKQ-qOnRcS4DAKBhzcfxCevqcdG4Q6g59x-1e
 after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
-  - ./send.sh failure $https://discordapp.com/api/webhooks/733080982898343936/RexOI4SflOB5tSW8Uj3z0uwdLUazBuTzKQ-qOnRcS4DAKBhzcfxCevqcdG4Q6g59x-1e
+  - ./send.sh failure https://discordapp.com/api/webhooks/733080982898343936/RexOI4SflOB5tSW8Uj3z0uwdLUazBuTzKQ-qOnRcS4DAKBhzcfxCevqcdG4Q6g59x-1e
