@@ -21,9 +21,21 @@ client.on('guildMemberAdded', () => {
 })
 
 // Embeds
-const infoEmbed = {
+const introEmbed1 = {
   color: '#c3ab64',
-  title: '**Group Links**',
+  image: {
+    url: 'https://media.discordapp.net/attachments/467450676671283200/732383744933101599/unknown.png',
+  },
+}
+const introEmbed2 = {
+  color: '#c3ab64',
+  image: {
+    url: 'https://media.discordapp.net/attachments/607687877752520704/728483395759374436/Main_group_Roundel.png?width=581&height=581',
+  },
+};
+
+const allGroupsEmbed = {
+  color: '#c3ab64',
   author: {
     name: 'The Grand Western Ascendancy',
     icon_url: 'https://seancornell.io/ss/tgwa.png',
@@ -31,38 +43,14 @@ const infoEmbed = {
   fields: [
     {
       color: '#2c2f33',
-      name: 'Main Group',
+      name: '__**The Grand Western Military**__',
       color: '#ffffff',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6737092)\n[Discord Invite](https://discord.gg/gvM3X5E)', inline: true,
-      inline: true,
+      value: '*The Grand Western Military safeguards our nation against enemies abroad and is the sword of freedom in the war to end all wars. The Army expects every patriot to do their duty and enlist. Within the Military there are countless branches and divisions you can join with various types of roles and responsibilities.*\n*The army is currently led by <@401465687786389525>.*\n[Group Link](https://www.roblox.com/groups/6737125)\n[Discord Invite](https://discord.gg/vxbPPpZ)',
     },
     {
       color: '#2c2f33',
-      name: 'Armed Forces',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6737125)\n[Discord Invite](https://discord.gg/vxbPPpZ)', inline: true,
-      inline: true,
-    },
-    {
-      color:'#2c2f33',
-      name: '1st Infantry Legion',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6885504)\n[Discord Invite](https://discord.gg/qkVSDT2)', inline: true,
-      inline: true,
-    },
-    {
-      color: '#2c2f33',
-      name: 'Military Police Corps',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6885441)\nNo Discord Yet', inline: true,
-      inline: true,
-    },
-    {
-      color: '#2c2f33',
-      name: 'Institute of the Military Leadership',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6920746)\n[Discord Invite](https://discord.gg/XmdPhf)', inline: true,
-    },
-    {
-      color: '#2c2f33',
-      name: 'The Empire of Liberty Party',
-      value: 'CO: <@257663701505671169>\nXO: Open\n[Group Link](https://www.roblox.com/groups/6737140/The-Empire-of-Liberty-Party#!/about)\n[Discord Invite](https://discord.gg/JQpGkch)', inline: true,
+      name: '__**The Empire of Liberty Party**__',
+      value: '*The Empire of Liberty Party handles recruitment in the Ascendancy, internal affairs, as well as vital home defense. A beacon to our former banners and our remaining ideals. It is currently lead by <@302532953341296660>*\n[Group Link](https://www.roblox.com/groups/6737140/The-Empire-of-Liberty-Party#!/about)\n[Discord Invite](https://discord.gg/JQpGkch)', inline: true,
       inline: true,
     },
   ],
@@ -72,10 +60,23 @@ const infoEmbed = {
   }
 };
 
+const divisionsEmbed = {
+  color: '#c3ab64',
+  author : {
+    name: 'Enlistment',
+    icon_url: 'https://seancornell.io/ss/tgwa.png',
+  },
+  fields: [
+    {
+      color:'#2c2f33',
+      name: '—————————————————————————————————',
+      value: '*The Grand Western Military safeguards our nation against enemies abroad and is the sword of freedom in the war to end all wars. The Army expects every patriot to do their duty and enlist. Within the Military there are countless branches and divisions you can join with various types of roles and responsibilities. The army is currently led by <@401465687786389525>.*\n\nYou can start your career now.\n\n**HOW TO ENLIST**\n— Join The Grand Western Ascendancy\n[Group Link](https://www.roblox.com/groups/6737092/The-Grand-Western-Ascendancy#!/about)\n[Discord Invite](https://discord.gg/gvM3X5E)\n— Join The Grand Western Army\n[Group Link](https://www.roblox.com/groups/6737125)\n**—————————————————————————————————**',
+    },
+  ],
+}
 const helpEmbed = {
   color: 0x0099ff,
-  title: 'Command List',
-  url: 'https://seancornell.io/CatchJS/docs',
+title: 'Command List',
   description: 'A list of available commands',
   fields: [
     {
@@ -89,8 +90,12 @@ const helpEmbed = {
       inline: true,
     },
     {
-      name: ':info',
-      value: 'Sends information about the group',
+      name: ':maininfo',
+      value: 'Sends information about the main branches in the group',
+    },
+    {
+      name: ':armyinfo',
+      value: 'Sends information about the army\'s subdivisions',
     },
   ],
   timestamp: new Date(),
@@ -125,7 +130,7 @@ client.on('message', message => {
       })
   }
 
-  if (message.content === `${prefix}info`) {
+  if (message.content === `${prefix}maininfo`) {
     message.reply('Would you like the information in your DMs (1️⃣) or in this channel (2️⃣)?')
       message.react('1️⃣').then(() => message.react('2️⃣'));
 
@@ -139,11 +144,38 @@ client.on('message', message => {
 
           if (reaction.emoji.name === '1️⃣') {
 
-            message.author.send({embed: infoEmbed})
+            message.author.send({embed: introEmbed2})
+            message.author.send({embed: allGroupsEmbed})
 
         } else if (reaction.emoji.name === "2️⃣"){
 
-            message.channel.send({embed: infoEmbed})
+            message.channel.send({embed: introEmbed2})
+            message.channel.send({embed: allGroupsEmbed})
+
+          }
+      })
+  }
+  if (message.content === `${prefix}armyinfo`) {
+    message.reply('Would you like the information in your DMs (1️⃣) or in this channel (2️⃣)?')
+      message.react('1️⃣').then(() => message.react('2️⃣'));
+
+      const filter = (reaction, user) => {
+        return ['1️⃣', "2️⃣"].includes(reaction.emoji.name) && user.id == message.author.id;
+      };
+
+      message.awaitReactions(filter, {max: 1, time: 10000, errors: ['time'] })
+        .then(collected => {
+          const reaction = collected.first();
+
+          if (reaction.emoji.name === '1️⃣') {
+
+            message.author.send({embed: introEmbed1})
+            message.author.send({embed: divisionsEmbed})
+
+        } else if (reaction.emoji.name === "2️⃣"){
+
+            message.channel.send({embed: introEmbed1})
+            message.channel.send({embed: divisionsEmbed})
 
           }
       })
