@@ -22,6 +22,6 @@
   "homepage": "https://github.com/sp00p/CatchJS#readme",
   "dependencies": {
     "discord.js": "^12.2.0",
-    "node.js": "^14.0.0"
+    "node.js": "^12.18.2"
   }
 }
